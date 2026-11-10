@@ -1,0 +1,6 @@
+/* Until the first meetup is added to assets/data/meetups.js, any link to the meetups page shows "First meetup coming soon!" instead of navigating. */
+(function(){var M=window.MEETUPS||{};var live=!!(M.next||(M.upcoming&&M.upcoming.length)||(M.notes&&M.notes.length));if(live)return;
+var st=document.createElement('style');st.textContent='.soon-toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);z-index:60;padding:13px 22px;border-radius:999px;background:#1b1022;border:1px solid #ffffff33;color:#fff3e6;font:600 14px/1 Inter,system-ui,sans-serif;box-shadow:0 14px 40px #000a;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s}.soon-toast.show{opacity:1;transform:translate(-50%,0)}';document.head.appendChild(st);
+var t=document.createElement('div');t.className='soon-toast';t.setAttribute('role','status');t.setAttribute('aria-live','polite');t.textContent='The first meetup is coming soon!';document.body.appendChild(t);var h;
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$="meetups.html"]');if(!a)return;e.preventDefault();t.classList.add('show');clearTimeout(h);h=setTimeout(function(){t.classList.remove('show')},2200)});
+})();
